@@ -1,3 +1,5 @@
+My second and the last PHP project :) Written in 2011.
+
 Designed and developed from scratch, this project aimed for Amazon affiliate program. Main technology is PHP with help of jQuery, html/css, simple LRU-cache and understanding of Amazon web services.
 
 Main features:
