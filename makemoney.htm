@@ -1,0 +1,383 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Make money with SimpleAmazonSearch</title>
+<script src="js/jquery-1.8.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.filter_input.js" type="text/javascript"></script>
+<style type="text/css">
+body {
+	background: url("http://simpleamazonsearch.com/img/bg.png") repeat scroll 0 0 rgb(223, 223, 223);
+}
+
+.s12 {
+	font-family: georgia, serif; color: black; font-size: 12pt;
+}
+
+.s17 {
+	font-family: georgia, serif; color: black; font-size: 17pt;
+}
+
+.s24 {
+	font-family: georgia, serif; color: black; font-size: 24pt;
+}
+
+
+.link {
+	font-family: georgia, serif; font-size: 14pt;
+	color: green;
+	border-bottom: 1px dashed green;
+	cursor: pointer;
+}
+
+.image-page-button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #dedede) );
+	background:-moz-linear-gradient( center top, #ffffff 5%, #dedede 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede');
+	background-color:#ffffff;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#000000;
+	font-family:arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:9px 36px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+	cursor: pointer;
+}.image-page-button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dedede), color-stop(1, #ffffff) );
+	background:-moz-linear-gradient( center top, #dedede 5%, #ffffff 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dedede', endColorstr='#ffffff');
+	background-color:#dedede;
+}.image-page-button:active {
+	position:relative;
+	top:1px;
+}
+
+.screenshot {
+	border: 1px solid #346789;
+	box-shadow: 2px 2px 19px #e0e0e0;
+	-o-box-shadow: 2px 2px 19px #e0e0e0;
+	-webkit-box-shadow: 2px 2px 19px #e0e0e0;
+	-moz-box-shadow: 2px 2px 19px #e0e0e0;
+	-moz-border-radius: 0.5em;
+	border-radius: 0.5em;
+	text-align: center;
+	background-color: white;
+	color: black;
+	margin: 2px;
+	padding: 2px;
+}
+
+.right-arrow {
+	position: relative;
+	margin-left: 10px;
+	margin-right: 6px;
+	top: 20px;
+}
+
+</style>
+<script type="text/javascript">
+
+	var a2a_config = a2a_config || {};
+	a2a_config.onclick = 1;
+	a2a_config.num_services = 20;
+
+	function heLikes() {
+		$('#questions').hide();
+		$('#liked').show();
+		ScrollToElement(document.getElementById('liked'));
+		$('#nick').filter_input({regex:'[a-zA-Z0-9_]'});
+		$('#nick').filter_input({
+			  regex:'[a-zA-Z0-9_]',
+			  feedback: function(char) {
+				if (char.charCodeAt(0) != 13) {
+				    $('#wrong-char').html("<font style='color:red'>" + char + " is not allowed. Only english letters, digits ans underline symbol</font>");
+				}
+			  }
+		});
+	}
+	
+	function trim(stringToTrim) {
+		return stringToTrim.replace(/^\s+|\s+$/g,"");
+	}	
+	
+	function checkNick() {
+		var nick = $('#nick').val();
+		nick = trim(nick);
+		nick = nick.replace(/(<([^>]+)>)/ig, "");
+		if (nick.length > 0) {
+			$('#checkmark').html("<img src='img/aff_loader.gif' style='position:relative;top:10px;'>");
+			$.ajax({
+				  url: "aff_nick.php",
+				  type: 'POST',
+				  data: {
+					  'nick': nick,
+					  'action': 'check'
+				  }
+				}).done(function(resp) {
+					if (resp == "ok") {
+						$('#checkmark').html("<img src='img/checkmark.png' style='position:relative;top:10px;'>");
+						$('#step2').show();
+						$('#step2_1').hide();
+						ScrollToElement(document.getElementById('step2'));
+						$('#link-nick').html(nick);
+					} else {
+						$('#checkmark').html("<img src='img/nick_taken.png' style='position:relative;top:10px;'>");
+						$('#step2_1').show();
+						$('#step2').hide();
+						ScrollToElement(document.getElementById('step2_1'));						
+					}
+				});
+		}
+	}
+	
+	function saveAll() {
+		var nick = $('#nick').val();
+		nick = trim(nick);
+		nick = nick.replace(/(<([^>]+)>)/ig, "");
+		
+		var keyId = $('#keyId').val();
+		keyId = trim(keyId);
+		keyId = keyId.replace(/(<([^>]+)>)/ig, "");
+		
+		var key = $('#key').val();
+		key = trim(key);
+		key = key.replace(/(<([^>]+)>)/ig, "");
+		
+		var tag = $('#tag').val();
+		tag = trim(tag);
+		tag = tag.replace(/(<([^>]+)>)/ig, "");
+		
+		if (tag.length > 0) {
+			nickname = nick;
+			$('#save-button').html("....");
+			$.ajax({
+				url: "aff_nick.php",
+				  type: 'POST',
+				  data: {
+					  'nick': nick,
+					  'action': 'verify',
+					  'key_id': keyId,
+					  'key': key,
+					  'tag': tag
+				  }
+				}).done(function(resp) {
+					$('#save-button').html("Verify");
+					console.log(resp);
+					if (resp == 'good') {
+						$('#step3').show();
+						$('#step4').hide();
+						ScrollToElement(document.getElementById('step3'));
+						$('#ready-info').val("http://simpleamazonsearch.com/u-" + nick);
+						$('#a2a_dd').attr("href", "http://www.addtoany.com/share_save?linkurl=http%3A%2F%2Fsimpleamazonsearch.com%2Fu-" + nick + "&amp;linkname=Simple%20Amazon%20Search");
+						var fileref = document.createElement('script');
+						fileref.setAttribute("type","text/javascript");
+						fileref.setAttribute("src", "http://static.addtoany.com/menu/page.js");						
+						$.ajax({
+							url: "aff_nick.php",
+							  type: 'POST',
+							  data: {
+								  'nick': nick,
+								  'action': 'save',
+								  'key_id': keyId,
+								  'key': key,
+								  'tag': tag
+							  }
+							}).done(function(resp) {
+						});
+					}
+					if (resp == 'bad') {
+						$('#step3').hide();
+						$('#step4').show();
+						ScrollToElement(document.getElementById('step4'));					
+					}
+			});			
+		}
+	}
+	
+	var nickname;
+	
+	function ScrollToElement(theElement){
+		  var selectedPosX = 0;
+		  var selectedPosY = 0;
+		  while(theElement != null){
+		    selectedPosX = theElement.offsetLeft;
+		    selectedPosY += theElement.offsetTop;
+		    theElement = theElement.offsetParent;
+		  }
+		 animateTo(selectedPosY);
+	}
+
+	function animateTo(topNumber) {
+		$('html, body').animate({scrollTop:topNumber}, 'fast');
+	}
+
+</script>
+</head>
+<body>
+<center>
+<span class="s12"><a href="http://simpleamazonsearch.com"><< Back to home page</a></span>
+<br><br>
+<table>
+	<tr>
+		<td align="left">
+			<span class="s12">
+				You don't know anything about the Internet?<br>
+				Or just yesterday bought the computer?
+			</span><br><br><br>
+			<span class="s24">You still can make some extra cash. Seriously.</span><br><br><br>
+			<span class="s12">
+				All you need is to let site to work through your Amazon affiliate tag. <a href="http://hubpages.com/learningcenter/creating-an-amazon-affiliate-account" target="_blank">Learn</a> how to get one in 2 minutes.<br><br>
+				How SimpleAmazonSearch.com works now:
+			</span><br>
+			<span class="s12">
+				User enters keyword for search<span><img src="img/right-arrow.png" class="right-arrow"></span>
+				System does it's work and shows the best offers<img src="img/right-arrow.png" class="right-arrow">
+				User chooses one and buys it from Amazon<img src="img/right-arrow.png" class="right-arrow">
+				Amazon gives me percentages of sales
+			</span><br><br><br>
+			<span class="s17">
+				Step 4 can be yours.
+			</span><br><br>
+			<span class="s12">
+				You just need to get a simple link eg. <b>www.simpleamazonsearch.com/u-YourNick</b> and share it (forums, facebook etc).<br><br>
+				What will happen?
+			</span><br><br>
+			<span class="s17">
+				The magic!
+			</span><br><br>
+			<span class="s12">
+				Once someone will click on that link - he or she automatically can bring income for you.<br>
+				It's because the browser will remember to use <b>yours</b> affiliate tag. Now if he or she will search & buy something - percents from sales will be yours. Always.
+			</span><br><br>
+			<span class="s17">
+				But that's not all!
+			</span><br><br>
+			<span class="s12">
+				Need to pay attention to special sharing system: user can share links to products groups or even images, for example:<br><br>
+				<table>
+					<tr>
+						<td>Link to <i>Womens Underwire Shelf Bra</i> best offers:</td>
+						<td>&nbsp;</td>
+						<td><a href="http://simpleamazonsearch.com/offer-1go" target="_blank">simpleamazonsearch.com/offer-1go</a></td>
+					</tr>
+					<tr>
+						<td>Link to <i>Chopper Bar Lace Shelf Bra</i> image & quick info</td>
+						<td>&nbsp;</td>
+						<td><a href="http://simpleamazonsearch.com/photo-1gt" target="_blank">simpleamazonsearch.com/photo-1gt</a></td>
+					</tr>
+				</table><br><br>
+				These links also will contain your affiliate data, so all people who will open them -
+			</span><br><br>
+			<span class="s17">
+				can also generate income for you
+			</span><br><br>
+			<span class="s12">
+				So, if you will share link like <b>www.simpleamazonsearch.com/u-YourNick</b> with friends...<br>
+				<img src="img/arrow2.png" style="position:relative;left:-18px;"><br>
+				&nbsp;&nbsp;&nbsp;
+				<span style="position:relative;left:20px;top:-23px;">friend will open site, will do search, like some image or product and will share it with their friends...</span><br>
+				<img src="img/arrow2.png" style="position:relative;left:17px;top:-20px;"><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="position:relative;left:42px;top:-42px;font-weight:bold;">...you might have an army, which can bring you a huge income!</span><br><br>
+				Real-world example:<br><br>
+				<ul style="list-style-type:none;">
+					<li>1. John got his link <b>simpleamazonsearch.com/u-john1983</b> and posted in his wall at Facebook;</li>
+					<li style="margin-top:4px;margin-bottom:4px;">2. Kate, Mark and Paul interested and visited it;</li>
+					<li>3. If Kate, Mark or Paul will visit SimpleAmazonSearch.com again and buy something - they'll be happy.<br>
+					John too: his friends got neccessary things and he will get some cash (depending on how expensive these things were);
+					<li style="margin-top:4px;margin-bottom:4px;">4. Kate and Mark liked some products and shared links to it with their 4 friends, each (like simpleamazonsearch.com/offer-1go);</li>
+					<li>5. Now John has 11 people who can do a passive income for him.</li>
+				</ul>
+				<br><br>
+				All are happy.<br>
+				What if John would have 50 friends, and each of them would have 30, and all these people will visit SimpleAmazonSearch.com, which will work through John's affilate tag for them? ;)
+				<br><br>
+				Why am I doing this? I really like to make easy and free services.<br>
+				One of them, also just-for-fun free project, you may know: <a href="http://sitecostcalculator.com/" target="_blank">SiteCostCalculator.com</a><br><br>				
+				So, would you like to try?
+			</span>
+		</td>
+	</tr>
+	<tr>
+		<td align="left"><br><br>
+			<div id="questions">
+				<span class="link" onclick="heLikes();">Yes</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<a class="link" style="text-decoration:none;" href="http://simpleamazonsearch.com">No</a>
+			</div>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td align="left">
+			<div id="liked" style="display:none;">
+				<span class="s12"><b>Great.</b>
+				<br>Please, provide a nick, which you'd like to use:&nbsp;
+				<input type="text" size="20" id="nick" style="font-family: georgia, serif; color: black;font-size:17px;;height:30px;" onkeypress="$('#wrong-char').html('');">&nbsp;
+				<span class="image-page-button" style="position:relative;top:-1px;" onclick="checkNick();">Check</span>&nbsp;
+				<span id="checkmark"></span><br>
+				<span id="wrong-char"></span>
+				</span>
+			</div>
+		</td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td align="left">
+			<div id="step2" style="display:none;">
+				<span class="s12">
+				Your link <b>simpleamazonsearch.com/u-<span id="link-nick"></span></b> almost ready for use.<br>
+				Please, provide the remaining information:<br><br>
+				Access Key ID:<br>
+				<input type="text" size="99" id="keyId">&nbsp;optional<span style="position:relative;bottom:2px;">*</span><br><br>
+				Secret Access Key:<br>
+				<input type="text" size="99" id="key">&nbsp;optional<span style="position:relative;bottom:2px;">*</span><br><br>
+				Tracking ID:<br>
+				<input type="text" size="99" id="tag"><br><br>
+				</span><br>
+				<span style="position:relative;bottom:2px;">*</span>
+				You can enter just Tracking-ID (aka Tag) and use mine first and second fields instead.<br>
+				My Access Key ID and Secret Access Key + yours Tag will work great and can bring you a good percentage of sales.<br>
+				But in that case you should know about traffic limit, which Amazon gives to each affilate account: one request per one second.<br>
+				It is not a problem - I made tricky defense mechanism against exceeding the limit and your user just might wait а few extra seconds.<br>
+				In my opinion this may affect the total number of yours potential buyers.<br>
+				But anyway: if for some reasons you want to enter just your Tag - your link will work as mentioned earlier, moreover:<br>
+				it'll work excellent :o)<br><br>
+				<center><span class="image-page-button" onclick="saveAll();" id="save-button">Verify</span></center>
+			</div>
+			<div id="step2_1" style="display:none;">
+				<span class="s12">This nick already taken..</span>
+			</div>
+		</td>
+	</tr>
+	<tr><td>&nbsp;</td></tr>
+	<tr>
+		<td align="center">
+			<div id="step3" style="display:none;">
+				<span class="s12" style="color:green;">
+				Сongratulations!<br>
+				Your account info are valid and ready to use:<br>
+				<input type="text" size="99" value="" onclick="this.select();" id="ready-info">
+				</span><br><br>
+				<span class="s17" style="color:green;">Now you can share this link. Choose neccessary service:</span>&nbsp;
+				<a class="a2a_dd" id="a2a_dd" target="_blank"><img style="position:relative;top:5px;" src="http://static.addtoany.com/buttons/share_save_256_24.png" width="256" height="24" border="0" alt="Share"/></a>
+				<br><br><br><br>
+			</div>
+			<div id="step4" style="display:none;">
+				<span class="s12" style="color:red;">
+				Sorry. Something wrong with your data. Re-check, please.
+				</span>
+			</div>
+		</td>
+	</tr>
+</table>
+</center>
+</body>
+</html>

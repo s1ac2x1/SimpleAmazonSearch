@@ -1,0 +1,5 @@
+content	jobs	content/
+locale	jobs	en-US	locale/en-US/
+skin	jobs	classic/1.0	skin/
+overlay	chrome://browser/content/browser.xul	chrome://jobs/content/firefoxOverlay.xul
+style	chrome://global/content/customizeToolbar.xul	chrome://jobs/skin/overlay.css

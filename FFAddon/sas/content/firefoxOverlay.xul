@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://jobs/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://jobs/locale/jobs.dtd">
+<overlay id="jobs-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+         
+  <script src="overlay.js"/>
+  
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="jobs-strings" src="chrome://jobs/locale/jobs.properties"/>
+  </stringbundleset>
+
+  <menupopup id="menu_ToolsPopup">    
+    <menuitem id="jobs-hello" label="&jobs.label;" 
+    class="menuitem-iconic" image="chrome://jobs/content/find16.png" 
+              oncommand="jobs.show();"/>
+    <menuseparator id="jobs-sep-tools"/>            
+  </menupopup>
+    
+   <popup id="contentAreaContextMenu"> 
+   <menuseparator id="jobs-sep-context" insertbefore="context-sep-properties"/>
+   <menuitem id="jobs-context" insertbefore="context-sep-properties" label="&jobs.label;" class="menuitem-iconic" image="chrome://jobs/content/find16.png" oncommand="jobs.show()"/>   
+   </popup>
+
+
+<statusbar id="status-bar">
+        <statusbarpanel id="jobs.status">            
+            <image id="jobs-status-image" width="16" height="16" src="chrome://jobs/content/find16.png" tooltiptext="&jobsStatus.tooltip;" onclick="if (!event.button) jobs.show()"  context="jobs.status.menu"/>
+         <popup id="jobs.status.menu">
+          <menuitem label="Write a review" oncommand="jobs.review()"/>
+          <menuseparator id="jobs-sep-local1"/>
+          <menuitem label="&jobs.menu.about;" oncommand="jobs.about()"/>
+         </popup>
+
+         </statusbarpanel>
+    </statusbar>
+
+  
+</overlay>

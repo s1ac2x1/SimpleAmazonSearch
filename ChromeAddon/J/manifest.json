@@ -1,0 +1,12 @@
+{
+   "background_page": "background.html",
+   "description": "Select liked job/vacancy/info keyword(s) on the page and get all possible proposals based on our jobs meta search engine",
+   "icons": {
+      "16": "icon.png"
+   },
+   "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGoWFx8CuCRysgbQiCb0XKTqUN7J+6ObWWN3EMyF5+6/xcFDAhbcy6nyaimWrfWLpvikp33TOcy5eu+R3uIwflhyS5VdFviMtM5PQJj0XfyJ+wvUK1YRp2EEG7Oyi0skG0QzfBRth6fOEgnrc8+GKh062gFZRZxmf9Rk5/KQLq+QIDAQAB",
+   "name": "Jobs Finder Tool",
+   "permissions": [ "contextMenus", "tabs", "http://*/*", "https://*/*" ],
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "0.1"
+}

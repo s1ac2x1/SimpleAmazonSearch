@@ -1,0 +1,8 @@
+<div style="display:none;">
+	<span><img src="img/left-arrow.png"></span>
+	<span class="prices-range-left">###base_search.circles.minPrice###</span>
+		###base_search.circles###
+	<span class="prices-range-right">###base_search.circles.maxPrice###</span>
+	<span><img src="img/right-arrow.png"></span>
+	<span id="debug" style="display:none;">###debug###</span>
+</div>

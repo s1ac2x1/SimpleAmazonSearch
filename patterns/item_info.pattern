@@ -1,0 +1,76 @@
+<center>
+	<br><br>
+	###offers###
+	<br><br>
+	<a class="other-link-text" href="###details###" target="_blank" id="details"><img src="img/amazon_logo.png" style="border:none;position:relative;"><span style="position:relative;bottom:26px;margin-left:3px;">More details</span></a>&nbsp;
+	<a class="other-link-text" href="###friend###" target="_blank" style="border:none;" id="friend"><img src="img/friend.png" style="border:none;position:relative;"><span style="position:relative;bottom:26px;margin-left:3px;">Tell a friend</span></a>&nbsp;
+	<a class="other-link-text" href="###custreview###" target="_blank" style="border:none;" id="custreview"><img src="img/custreview.png" style="border:none;position:relative;"><span style="position:relative;bottom:26px;margin-left:3px;">Customers reviews</span></a>&nbsp;
+	
+	<a class="other-link-text" href="###babyreg###" target="_blank" style="border:none;" id="babyreg"><img src="img/baby_reg.png" style="border:none;position:relative;bottom:5px;"><span style="position:relative;bottom:26px;margin-left:3px;">Add to Baby Registry</span></a>&nbsp;
+	<a class="other-link-text" href="###wedding###" target="_blank" style="border:none;" id="wedding"><img src="img/wedding.png" style="border:none;position:relative;"><span style="position:relative;bottom:26px;margin-left:3px;">Add to Wedding Registry</span></a>&nbsp;
+	<a class="other-link-text" href="###wishlist###" target="_blank" style="border:none;" id="wishlist"><img src="img/wishlist.png" style="border:none;position:relative;"><span style="position:relative;bottom:26px;margin-left:3px;">Add to Wishlist</span></a>			
+	<br><br>
+</center>
+<div class="base-item-info">
+	<center><span class="price" id="price-title" style="display:###price-display###;">###price###</span>
+	<span style="display:###if-error-item###;">###error-item-tip###</span>
+	</center><br>
+	<span class="review">
+		<center>
+			<span class="title" id="curr-item-title">###title###</span>
+			<span class="title" id="curr-item-title-64" style="display:none">###title64###</span>
+			<br>
+			<span class="example-search" onclick="showBig();" id="shwb" style="display:###big-image-display###;">big image</span>&nbsp;&nbsp;&nbsp;
+			<span class="example-search" onclick="findByTitle();" style="display:###look-best-offers-display###;">look for best offers with this title</span>&nbsp;&nbsp;&nbsp;
+			<span id="add-to-favorites" style="display:###add-to-fav-display###;"><span class="###example-search###" onclick="addToFavorites('###fav_asin###', '###fav_title###', '###fav_small_img_url###', '###cache_file_url###');">add to favorites</span></span>
+			<span id="update-favorites" style="display:###update-fav-display###;"><span class="example-search3" onclick="addToFavorites('###fav_asin###', '###fav_title###', '###fav_small_img_url###', '###cache_file_url###');">update item in favorites</span></span>
+			<span id="remove-from-favorites" style="display:###remove-from-fav-display###;"><span class="example-search2" onclick="removeFromFavorites('###fav_asin###', '###fb_id###', true);">remove from favorites</span></span>
+			&nbsp;&nbsp;&nbsp;<span class="###example-search###" onclick="bestBN('###bn-id###')" id="mp-bn" style="display:###most-popular-display###;">most popular ###bn-title###</span>
+			&nbsp;&nbsp;&nbsp;<span class="###example-search###" onclick="bestAns('###ans-id###')" id="mp-ans" style="display:###most-popular2-display###;">most popular ###ans-title###</span>
+			&nbsp;&nbsp;&nbsp;<span class="###example-search###" onclick="loadVariants('###var-asin###')" style="display:###var-display###;" id="load-var">find all variations</span>
+			<br>
+			Share with friends:&nbsp;
+			<span style="position:relative;top:8px;">
+				<a href="http://www.facebook.com/sharer.php?u=http://simpleamazonsearch.com/offer-###item-external-url###" target="_blank"><img border="0" src="img/fb-share.png"></a>&nbsp;
+				<a href="http://twitter.com/home?status=Great ###bn-title###: ###short-link-to-title###" target="_blank"><img border="0" src="img/twitter.png"></a>
+			</span>
+			<span id="get-short-link-outer">&nbsp;or just copy & share link:&nbsp;
+			<input type="test" size="20" value="###short-link-to-title###" onclick="this.select();">
+		</center>
+	</span>
+</div><br>
+<div id="bn-load"></div>
+<div id="ans-load"></div>
+<div id="var-load"></div>
+<div id="var-content" style="display:none; margin-bottom:20px; position:relative; width: 30%;"></div>
+<div class="base-item-info" id="bn-content" style="display:none; margin-bottom:20px; position:relative;"></div>
+<div class="base-item-info" id="ans-content" style="display:none; margin-bottom:20px; position:relative;"></div>
+###review-features###
+###similar-accessories###
+			<center>
+				<iframe src="fbbutton.php?url=###item-external-url###" frameborder="0" style="position:relative;width:40%;left:1%;height:250px;"></iframe>
+				<p>
+				    <a href="http://validator.w3.org/check?uri=http%3A%2F%2Fsimpleamazonsearch.com" target="_blank">
+				    <img src="http://www.w3.org/Icons/valid-html401" alt="Valid HTML 4.01 Transitional" title="Valid HTML 4.01 Transitional" height="31" width="88"></a>
+				</p><br><br>
+				2012-2013, <a href="http://kishlaly.com" target="_blank">Vladimir Kishlaly</a>
+			</center>			
+			<br style="clear:both;">
+
+<div id="hidden-item-title" style="display: none;">###hiddentitle###</div>
+<div style="display:none; z-index: 999; position: absolute; left:50%; top:50%; margin-left:-###margin-left###px;" id="lbBig">
+	<div class="best" style="height:###big-image-height###px; width:###big-image-width###px;">
+		<img src="###bigImageURL###" id="imgb">
+		<br><center>
+			Share with friends:&nbsp;
+			<span style="position:relative;top:5px;">
+				<a href="http://www.facebook.com/sharer.php?u=http://simpleamazonsearch.com/photo-###image-external-url###" target="_blank"><img border="0" src="img/fb-share.png"></a>&nbsp;
+				<a href="http://twitter.com/home?status=Nice photo ###short-link-to-image###" target="_blank"><img border="0" src="img/twitter.png"></a>
+			</span>
+			<span id="get-short-link-outer"><br>
+			<input type="test" size="20" value="###short-link-to-image###" onclick="this.select();">
+		</center>
+	</div>
+</div>
+<div style="display:none" id="small_img_height">###small_img_height###</div>
+<div style="display:none" id="small_img_width">###small_img_width###</div>

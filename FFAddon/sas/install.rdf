@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+ xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>sas@kishlaly</em:id>
+    <em:name>Simple Amazon Search</em:name>
+    <em:version>1.0</em:version>
+    <em:creator>www.simpleamazonsearch.com</em:creator>
+    <em:description>Find best Amazon offers with one click and without tedious filtering</em:description>
+    <em:homepageURL>http://www.simpleamazonsearch.com/</em:homepageURL>
+    <em:aboutURL>chrome://jobs/content/about.xul</em:aboutURL>
+    <em:iconURL>chrome://jobs/content/find16.png</em:iconURL>
+    <em:type>2</em:type>
+    <em:targetApplication>
+      <Description>
+        <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+        <em:minVersion>0.3</em:minVersion>
+        <em:maxVersion>20.0</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

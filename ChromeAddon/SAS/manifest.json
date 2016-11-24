@@ -1,0 +1,14 @@
+{
+   "background": { "page": "background.html" },
+   "description": "Find best Amazon offers with one click and without tedious filtering",
+   "icons": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png",
+      "64": "icon64.png"
+   },
+   "name": "Simple Amazon Search",
+   "permissions": [ "contextMenus", "tabs", "http://*/*", "https://*/*" ],
+   "version": "1",
+   "manifest_version": 2
+}

@@ -1,0 +1,1 @@
+pref("extensions.sas@kishlaly.description", "chrome://jobs/locale/jobs.properties");

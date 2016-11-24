@@ -1,0 +1,11 @@
+{
+   "background": "background.html",
+   "description": "Find out the most popular and cheapest items without tedious filtering",
+   "icons": {
+      "16": "icon.png"
+   },
+   "name": "Simple Amazon Search Tool",
+   "permissions": [ "contextMenus", "tabs", "http://*/*", "https://*/*" ],
+   "version": "1",
+   "manifest_version": 2
+}
