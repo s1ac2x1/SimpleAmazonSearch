@@ -151,16 +151,16 @@ class Validator
     return in_array(strtolower($str), self::$primitives);
   }
 
-  /**
-   * Validates a class name against PHP naming conventions and already defined
-   * classes, and optionally stores the class as a member of the interpreted classmap.
-   *
-   * @param string $className the name of the class to test
-   *
-   * @return string the validated version of the submitted class name
-   *
-   * @access private
-   */
+    /**
+     * Validates a class name against PHP naming conventions and already defined
+     * classes, and optionally stores the class as a member of the interpreted classmap.
+     *
+     * @param string $className the name of the class to test
+     * @return string the validated version of the submitted class name
+     *
+     * @throws ValidationException
+     * @access private
+     */
   private static function validateClassName($className)
   {
     $validClassName = self::validateNamingConvention($className);
@@ -179,16 +179,16 @@ class Validator
   }
 
 
-  /**
-   * Validates a wsdl type against known PHP primitive types, or otherwise
-   * validates the namespace of the type to PHP naming conventions
-   *
-   * @param string $type the type to test
-   *
-   * @return string the validated version of the submitted type
-   *
-   * @access private
-   */
+    /**
+     * Validates a wsdl type against known PHP primitive types, or otherwise
+     * validates the namespace of the type to PHP naming conventions
+     *
+     * @param string $type the type to test
+     * @return string the validated version of the submitted type
+     *
+     * @throws ValidationException
+     * @access private
+     */
   private static function validateTypeName($type)
   {
     if (substr($type, -2) == "[]" || strtolower(substr($type, 0, 7)) == "arrayof")

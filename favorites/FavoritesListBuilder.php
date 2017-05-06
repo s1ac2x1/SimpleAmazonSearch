@@ -11,12 +11,6 @@ class FavoritesListBuilder
         $this->favoriteItems = $favoriteItems;
     }
 
-    private function days($date)
-    {
-        $dateArr = explode("-", $date);
-        return gregoriantojd($dateArr[1], $dateArr[2], $dateArr[0]);
-    }
-
 
     public function html()
     {

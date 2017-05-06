@@ -1,5 +1,5 @@
 jQuery.cookie = function (name, value, options) {
-    if (typeof value != 'undefined') {
+    if (typeof value !== 'undefined') {
         options = options || {};
         if (value === null) {
             value = '';
@@ -7,9 +7,9 @@ jQuery.cookie = function (name, value, options) {
             options.expires = -1;
         }
         var expires = '';
-        if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+        if (options.expires && (typeof options.expires === 'number' || options.expires.toUTCString)) {
             var date;
-            if (typeof options.expires == 'number') {
+            if (typeof options.expires === 'number') {
                 date = new Date();
                 date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
             } else {
@@ -23,11 +23,11 @@ jQuery.cookie = function (name, value, options) {
         document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
     } else {
         var cookieValue = null;
-        if (document.cookie && document.cookie != '') {
+        if (document.cookie && document.cookie !== '') {
             var cookies = document.cookie.split(';');
             for (var i = 0; i < cookies.length; i++) {
                 var cookie = jQuery.trim(cookies[i]);
-                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                     break;
                 }
@@ -66,7 +66,7 @@ $.extend($.expr[":"], {
 
 function filterTableRows(tableId, searchBoxId) {
     var inputBoxValue = trim($("#" + searchBoxId).val());
-    if (inputBoxValue != "") {
+    if (inputBoxValue !== "") {
         $("#" + tableId + " tbody>tr").hide();
         $("#" + tableId + " td:contains-ci('" + inputBoxValue + "')").parent("tr").show();
     } else {
@@ -92,7 +92,7 @@ function show(item, num, isScroll, type) {
     $("#lbi-" + num).unbind('mouseenter mouseleave');
 
     for (var i = 1; i <= baseItemsCount; i++) {
-        if (i != num) {
+        if (i !== num) {
             $("#lbi-" + i).css("border", "1px solid #346789");
             $("#lbi-" + i).css("box-shadow", "2px 2px 19px #e0e0e0");
             $("#lbi-" + i).css("-o-box-shadow", "2px 2px 19px #e0e0e0");
@@ -136,7 +136,7 @@ function show(item, num, isScroll, type) {
             'trackingID': trackingID
         }
     }).done(function (response) {
-        if (response == 'expired') {
+        if (response === 'expired') {
             $('#keyword').val(currentKeyword);
             helpMessageIfCacheExpired = "Sorry, your search has been expired. Retrying..<br>";
             printCircles();
@@ -222,7 +222,7 @@ function newKeyword(key) {
 
 function printError(keyword) {
     var words = keyword.split(' ');
-    var filtered = new Array();
+    var filtered = [];
     for (var int = 0; int < words.length; int++) {
         var word = words[int];
         if (word.length < 7) {
@@ -416,19 +416,19 @@ function getSearchString() {
     category = category.replace(/(<([^>]+)>)/ig, "");
     var mainSearchText = keyword + " " + category;
     mainSearchText = trim(mainSearchText);
-    if (searchMode == "default") {
+    if (searchMode === "default") {
         return loaderBefore + mainSearchText + loaderAfter + "<br><br>";
     }
-    if (searchMode == "topsellers") {
+    if (searchMode === "topsellers") {
         return loaderBefore + "Top Sellers in " + category + "..." + loaderAfter + "<br><br>";
     }
-    if (searchMode == "mostwished") {
+    if (searchMode === "mostwished") {
         return loaderBefore + "Most Wished of " + category + "..." + loaderAfter + "<br><br>";
     }
-    if (searchMode == "mostgifted") {
+    if (searchMode === "mostgifted") {
         return loaderBefore + "Most Gifted " + category + "..." + loaderAfter + "<br><br>";
     }
-    if (searchMode == "newreleases") {
+    if (searchMode === "newreleases") {
         return loaderBefore + "New Releases of " + category + "..." + loaderAfter + "<br><br>";
     }
     var keyword = $('#keyword').val();
@@ -440,7 +440,7 @@ function getSearchString() {
     keyword = keyword + " " + cat;
     keyword = trim(keyword);
     var category = $('#categories-select option:selected').html();
-    if (searchMode == "incat") {
+    if (searchMode === "incat") {
         return loaderBefore + keyword + " in " + category + loaderAfter;
     }
 }
@@ -505,7 +505,7 @@ function searchTypeChanged(type) {
     $('#keyword').css("background", "white");
     $('#category').css("background", "white");
     var nodeId = $('#browseNodeId').html();
-    if (type == "default") {
+    if (type === "default") {
         $('#keyword').attr("onkeypress", "if (event.keyCode==13) { printCircles(true); }");
         $('#main-search-button').attr("onclick", "printCircles(true);");
         $('#keyword').removeAttr("class");
@@ -516,7 +516,7 @@ function searchTypeChanged(type) {
         $('#under-search-tip').html("");
         isIndexSearch = false;
     }
-    if (type == "topsellers") {
+    if (type === "topsellers") {
         $('#keyword').attr("onkeypress", "if (event.keyCode==13) { node('TopSellers'); }");
         $('#main-search-button').attr("onclick", "node('TopSellers');");
         $('#searchMode').html("Top Sellers");
@@ -532,7 +532,7 @@ function searchTypeChanged(type) {
         }
         isIndexSearch = false;
     }
-    if (type == "mostwished") {
+    if (type === "mostwished") {
         $('#keyword').attr("onkeypress", "if (event.keyCode==13) { node('MostWishedFor'); }");
         $('#main-search-button').attr("onclick", "node('MostWishedFor');");
         $('#searchMode').html("Most Wished for");
@@ -548,7 +548,7 @@ function searchTypeChanged(type) {
         }
         isIndexSearch = false;
     }
-    if (type == "mostgifted") {
+    if (type === "mostgifted") {
         $('#keyword').attr("onkeypress", "if (event.keyCode==13) { node('MostGifted'); }");
         $('#main-search-button').attr("onclick", "node('MostGifted');");
         $('#searchMode').html("Most Gifted");
@@ -564,7 +564,7 @@ function searchTypeChanged(type) {
         }
         isIndexSearch = false;
     }
-    if (type == "newreleases") {
+    if (type === "newreleases") {
         $('#keyword').attr("onkeypress", "if (event.keyCode==13) { node('NewReleases'); }");
         $('#main-search-button').attr("onclick", "node('NewReleases');");
         $('#searchMode').html("New Releases in");
@@ -580,7 +580,7 @@ function searchTypeChanged(type) {
         }
         isIndexSearch = false;
     }
-    if (type == "incat") {
+    if (type === "incat") {
         $('#keyword').attr("onkeypress", "if (event.keyCode==13) { printCircles(true); }");
         $('#main-search-button').attr("onclick", "printCircles(true);");
         $('#keyword').removeAttr("class");
@@ -680,7 +680,7 @@ function printCircles(flag, isScroll, alternativeText, isIndex) {
     }).done(function (resp) {
         $('#circles').html(resp);
         $("#circles").css("display", "none");
-        if (resp == 'no') {
+        if (resp === 'no') {
             $('#baseSearch').html("<div id=\"search-error\">" + printError(keyword) + "</div>");
             $('#keyword').css("background", "yellow");
             $('#picturesMode').hide();
@@ -698,7 +698,7 @@ function printCircles(flag, isScroll, alternativeText, isIndex) {
         var fileNamesParam = fileNamesParam_.substring(0, fileNamesParam_.length - 1);
         currentCacheFileNames = fileNamesParam;
         $('#picturesMode').show();
-        if ($('#itemset-default').attr("class") == 'cat-part-selected') {
+        if ($('#itemset-default').attr("class") === 'cat-part-selected') {
             loadItemFromPrecache('default', isScroll);
         } else {
             loadItemFromPrecache('big', isScroll);
@@ -731,7 +731,7 @@ function itemTipHide(divId) {
 function ScrollToElement(theElement) {
     var selectedPosX = 0;
     var selectedPosY = 0;
-    while (theElement != null) {
+    while (theElement !== null) {
         selectedPosX = theElement.offsetLeft;
         selectedPosY += theElement.offsetTop;
         theElement = theElement.offsetParent;
@@ -891,7 +891,7 @@ function favorites() {
         }
     }).done(function (resp) {
         var absense = false;
-        if (resp == "You have not added any items to favorites") {
+        if (resp === "You have not added any items to favorites") {
             absense = true;
             var h = "<span style=\"font-family:georgia,serif;color:#2a2a2a;font-size:12pt;position:relative;bottom:4px;\">You have not added any favorites yet..</span>";
             html = "<center><div class=\"scroll\" id=\"fav\">" + h + "</div></center>";
@@ -917,7 +917,7 @@ function removeFavConfirmed() {
         data: {
             'fb_id': fb_id
         }
-    })
+    });
     $('#scroll-out').fadeOut("slow");
 }
 
@@ -1152,10 +1152,10 @@ function decode64(input) {
 
         output = output + String.fromCharCode(chr1);
 
-        if (enc3 != 64) {
+        if (enc3 !== 64) {
             output = output + String.fromCharCode(chr2);
         }
-        if (enc4 != 64) {
+        if (enc4 !== 64) {
             output = output + String.fromCharCode(chr3);
         }
 
@@ -1378,7 +1378,7 @@ function updateFav(asin, fbId, itemDivCount) {
     }).done(function (resp) {
         $('#fav-item-' + itemDivCount).html(resp);
         var result = $('#fav-update-result').html();
-        if (result == 'bad') {
+        if (result === 'bad') {
             var title = $('#fav-update-result-title').html();
             $('#itemTip3').html("<font style=\"font-family: georgia, serif;font-size: 14pt;\">Seems this item has been deleted in Amazon store. You still can to <span class=\"example-search\" onclick=\"reFind('" + title + "');\">find it again</span> or <span class=\"example-search\" onclick=\"$('#itemTip3').fadeOut('slow');\">close</span></font>");
             $('#itemTip3').attr('class', 'itemTip');
@@ -1468,11 +1468,11 @@ function getBodyScrollLeft() {
 }
 
 function getClientWidth() {
-    return document.compatMode == 'CSS1Compat' && !window.opera ? document.documentElement.clientWidth : document.body.clientWidth;
+    return document.compatMode === 'CSS1Compat' && !window.opera ? document.documentElement.clientWidth : document.body.clientWidth;
 }
 
 function getClientHeight() {
-    return document.compatMode == 'CSS1Compat' && !window.opera ? document.documentElement.clientHeight : document.body.clientHeight;
+    return document.compatMode === 'CSS1Compat' && !window.opera ? document.documentElement.clientHeight : document.body.clientHeight;
 }
 
 function doCenter(blockId) {
@@ -1618,7 +1618,7 @@ function saveSettings() {
         $('#settings-save-btn').html("Save");
         populateSearchArrows();
         var selectedBack = $('input[name=user-back]:checked').val();
-        if (selectedBack == "no-back-div") {
+        if (selectedBack === "no-back-div") {
             $.ajax({
                 url: "settings/deleteBackground.php",
                 type: 'POST',
@@ -1630,7 +1630,7 @@ function saveSettings() {
                 loadAndCorrectBackgroundImage('http://simpleamazonsearch.com/settings/showimg.php?id=' + fb_id + "&rnd=" + d.getTime());
                 $('body').css("background", "white");
             });
-        } else if (selectedBack == "def-back-div") {
+        } else if (selectedBack === "def-back-div") {
             $.ajax({
                 url: "settings/defaultBackground.php",
                 type: 'POST',
@@ -1657,7 +1657,7 @@ function showBackgroundsMenu() {
     var selectedBack = $('input[name=user-back]:checked').val();
     $('#' + selectedBack).show();
     for (var i = 0; i < divs.length; i++) {
-        if (divs[i] != selectedBack) {
+        if (divs[i] !== selectedBack) {
             $('#' + divs[i]).hide();
         }
     }
@@ -1709,7 +1709,7 @@ function liveSearch() {
     $('#browseNodeId').html("");
     $('.cat-tip').html("");
     var searchMode = $("input:radio[name ='searchMode']:checked").val();
-    if (searchMode == 'topsellers' || searchMode == 'mostwished' || searchMode == 'mostgifted' || searchMode == 'newreleases') {
+    if (searchMode === 'topsellers' || searchMode === 'mostwished' || searchMode === 'mostgifted' || searchMode === 'newreleases') {
         $('#under-search-tip').html("For this search mode you need to specify a category. Please, select one.");
     }
     $('#browseNodeFullTitleEncoded').html("");
@@ -1787,7 +1787,7 @@ function liveSearchFilterChange(ch, labelId) {
     var allUnchecked = true;
     var hasChecked = false;
     $('.live-search-filter-checkbox').each(function (index, ch) {
-        if (ch.checked == true) {
+        if (ch.checked === true) {
             allUnchecked = false;
             hasChecked = true;
         }
@@ -1803,14 +1803,14 @@ function liveSearchFilterChange(ch, labelId) {
 }
 
 function hideFiltered(filterValue) {
-    if (filterValue != "") {
+    if (filterValue !== "") {
         $("#live-search-table td:contains-ci('" + filterValue + "')").parent("tr").hide();
     }
     $('#live-search-matched-categoies').jScrollPane();
 }
 
 function showFiltered(filterValue) {
-    if (filterValue != "") {
+    if (filterValue !== "") {
         $("#live-search-table td:contains-ci('" + filterValue + "')").parent("tr").show();
     }
     $('#live-search-matched-categoies').jScrollPane();
@@ -1841,7 +1841,7 @@ function liveSearchFilterRadioCheck(radioId, chId, chLabelId) {
         ch.checked = false;
     });
     $('.live-search-filter-checkbox-label-list').each(function (index, ch) {
-        if (ch.id != chLabelId) {
+        if (ch.id !== chLabelId) {
             ch.style.color = "graytext";
         } else {
             ch.style.color = "black";
@@ -1873,10 +1873,10 @@ function selectCagetory(title, nodeId, fullTitleEncoded) {
     $('#category').val(title);
     var cat = decode64(fullTitleEncoded);
     var splitted = cat.split('&mdash;');
-    var catSpans = new Array();
+    var catSpans = [];
     for (var int = 0; int < splitted.length; int++) {
         var word = splitted[int];
-        if (int != splitted.length - 1) {
+        if (int !== splitted.length - 1) {
             var span = "<span onclick='switchCategoryPart(this);' class='cat-part-unselected'>" + word + "</span>&nbsp;";
         } else {
             var span = "<span onclick='switchCategoryPart(this);' class='cat-part-selected'>" + word + "</span>&nbsp;";
@@ -1898,12 +1898,12 @@ function switchCategoryPart(span) {
     var content = $(span).html().replace("&amp;", "&");
     var currentClass = $(span).attr("class");
     var categoryInputValue = $('#category').val();
-    if (currentClass == 'cat-part-unselected') {
+    if (currentClass === 'cat-part-unselected') {
         $(span).removeAttr("class");
         $(span).attr("class", "cat-part-selected");
         categoryInputValue += " " + content;
     }
-    if (currentClass == 'cat-part-selected') {
+    if (currentClass === 'cat-part-selected') {
         $(span).removeAttr("class");
         $(span).attr("class", "cat-part-unselected");
         categoryInputValue = categoryInputValue.replace(content, "");
@@ -1974,10 +1974,10 @@ function itemsSortByPrice() {
     $('#itemset-sort-price').attr("class", "cat-part-selected");
     $('#itemset-sort-offers').removeAttr("class");
     $('#itemset-sort-offers').attr("class", "cat-part-unselected");
-    if ($('#itemset-default').attr("class") == "cat-part-selected") {
+    if ($('#itemset-default').attr("class") === "cat-part-selected") {
         var imgType = 'default';
     }
-    if ($('#itemset-big').attr("class") == "cat-part-selected") {
+    if ($('#itemset-big').attr("class") === "cat-part-selected") {
         var imgType = 'big';
     }
     loadItemFromPrecache(imgType, true, 'big', 'baseSearch', 'price');
@@ -1990,10 +1990,10 @@ function itemsSortByOffers() {
     $('#itemset-sort-price').attr("class", "cat-part-unselected");
     $('#itemset-sort-offers').removeAttr("class");
     $('#itemset-sort-offers').attr("class", "cat-part-selected");
-    if ($('#itemset-default').attr("class") == "cat-part-selected") {
+    if ($('#itemset-default').attr("class") === "cat-part-selected") {
         var imgType = 'default';
     }
-    if ($('#itemset-big').attr("class") == "cat-part-selected") {
+    if ($('#itemset-big').attr("class") === "cat-part-selected") {
         var imgType = 'big';
     }
     loadItemFromPrecache(imgType, true, 'big', 'baseSearch', 'offers');
@@ -2009,10 +2009,10 @@ function loadItemFromPrecache(mode, isScroll, loaderType, scrollAfter, sortType)
     ScrollToElement(document.getElementById('baseSearch'));
     var debug = $("#debug").html();
     if (!sortType) {
-        if ($('#itemset-sort-price').attr("class") == "cat-part-selected") {
+        if ($('#itemset-sort-price').attr("class") === "cat-part-selected") {
             sortType = 'price';
         }
-        if ($('#itemset-sort-offers').attr("class") == "cat-part-selected") {
+        if ($('#itemset-sort-offers').attr("class") === "cat-part-selected") {
             sortType = 'offers';
         }
     }
@@ -2039,7 +2039,7 @@ function loadItemFromPrecache(mode, isScroll, loaderType, scrollAfter, sortType)
         if (fb_id > 0) {
             populateSearchArrows();
         }
-        if (mode == 'default') {
+        if (mode === 'default') {
             ScrollToElement(document.getElementById('baseSearch'));
             show(document.getElementById('img-inside-inline-rectangle-1'), 1, isScroll);
         }

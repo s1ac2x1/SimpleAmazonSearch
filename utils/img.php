@@ -23,7 +23,7 @@
     <title><? echo $externalTitle; ?></title>
     <script type="text/javascript">
         jQuery.cookie = function (name, value, options) {
-            if (typeof value != 'undefined') {
+            if (typeof value !== 'undefined') {
                 options = options || {};
                 if (value === null) {
                     value = '';
@@ -31,9 +31,9 @@
                     options.expires = -1;
                 }
                 var expires = '';
-                if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+                if (options.expires && (typeof options.expires === 'number' || options.expires.toUTCString)) {
                     var date;
-                    if (typeof options.expires == 'number') {
+                    if (typeof options.expires === 'number') {
                         date = new Date();
                         date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
                     } else {
@@ -47,11 +47,11 @@
                 document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
             } else {
                 var cookieValue = null;
-                if (document.cookie && document.cookie != '') {
+                if (document.cookie && document.cookie !== '') {
                     var cookies = document.cookie.split(';');
                     for (var i = 0; i < cookies.length; i++) {
                         var cookie = jQuery.trim(cookies[i]);
-                        if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
                             cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                             break;
                         }
@@ -82,9 +82,9 @@
         }
 
         .image-page-button {
-            -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-            -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            -moz-box-shadow: inset 0 1px 0 0 #ffffff;
+            -webkit-box-shadow: inset 0 1px 0 0 #ffffff;
+            box-shadow: inset 0 1px 0 0 #ffffff;
             background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #dedede));
             background: -moz-linear-gradient(center top, #ffffff 5%, #dedede 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede');
@@ -100,7 +100,7 @@
             font-weight: bold;
             padding: 9px 36px;
             text-decoration: none;
-            text-shadow: 1px 1px 0px #ffffff;
+            text-shadow: 1px 1px 0 #ffffff;
         }
 
         .image-page-button:hover {

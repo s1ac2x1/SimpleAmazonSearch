@@ -31,9 +31,9 @@ body {
 }
 
 .image-page-button {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-moz-box-shadow:inset 0 1px 0 0 #ffffff;
+	-webkit-box-shadow:inset 0 1px 0 0 #ffffff;
+	box-shadow:inset 0 1px 0 0 #ffffff;
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #dedede) );
 	background:-moz-linear-gradient( center top, #ffffff 5%, #dedede 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede');
@@ -49,7 +49,7 @@ body {
 	font-weight:bold;
 	padding:9px 36px;
 	text-decoration:none;
-	text-shadow:1px 1px 0px #ffffff;
+	text-shadow:1px 1px 0 #ffffff;
 	cursor: pointer;
 }.image-page-button:hover {
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dedede), color-stop(1, #ffffff) );
@@ -98,7 +98,7 @@ body {
 		$('#nick').filter_input({
 			  regex:'[a-zA-Z0-9_]',
 			  feedback: function(char) {
-				if (char.charCodeAt(0) != 13) {
+				if (char.charCodeAt(0) !== 13) {
 				    $('#wrong-char').html("<font style='color:red'>" + char + " is not allowed. Only english letters, digits ans underline symbol</font>");
 				}
 			  }
@@ -123,7 +123,7 @@ body {
 					  'action': 'check'
 				  }
 				}).done(function(resp) {
-					if (resp == "ok") {
+					if (resp === "ok") {
 						$('#checkmark').html("<img src='img/checkmark.png' style='position:relative;top:10px;'>");
 						$('#step2').show();
 						$('#step2_1').hide();
@@ -172,7 +172,7 @@ body {
 				}).done(function(resp) {
 					$('#save-button').html("Verify");
 					console.log(resp);
-					if (resp == 'good') {
+					if (resp === 'good') {
 						$('#step3').show();
 						$('#step4').hide();
 						ScrollToElement(document.getElementById('step3'));
@@ -194,7 +194,7 @@ body {
 							}).done(function(resp) {
 						});
 					}
-					if (resp == 'bad') {
+					if (resp === 'bad') {
 						$('#step3').hide();
 						$('#step4').show();
 						ScrollToElement(document.getElementById('step4'));					
@@ -208,7 +208,7 @@ body {
 	function ScrollToElement(theElement){
 		  var selectedPosX = 0;
 		  var selectedPosY = 0;
-		  while(theElement != null){
+		  while(theElement !== null){
 		    selectedPosX = theElement.offsetLeft;
 		    selectedPosY += theElement.offsetTop;
 		    theElement = theElement.offsetParent;
@@ -223,7 +223,7 @@ body {
 </script>
 </head>
 <body>
-<center>
+<div style="text-align: center;">
 <span class="s12"><a href="http://simpleamazonsearch.com"><< Back to home page</a></span>
 <br><br>
 <table>
@@ -248,7 +248,7 @@ body {
 				Step 4 can be yours.
 			</span><br><br>
 			<span class="s12">
-				You just need to get a simple link eg. <b>www.simpleamazonsearch.com/u-YourNick</b> and share it (forums, facebook etc).<br><br>
+				You just need to get a simple link eg. <span style="font-weight: bold;">www.simpleamazonsearch.com/u-YourNick</span> and share it (forums, facebook etc).<br><br>
 				What will happen?
 			</span><br><br>
 			<span class="s17">
@@ -256,7 +256,7 @@ body {
 			</span><br><br>
 			<span class="s12">
 				Once someone will click on that link - he or she automatically can bring income for you.<br>
-				It's because the browser will remember to use <b>yours</b> affiliate tag. Now if he or she will search & buy something - percents from sales will be yours. Always.
+				It's because the browser will remember to use <span style="font-weight: bold;">yours</span> affiliate tag. Now if he or she will search & buy something - percents from sales will be yours. Always.
 			</span><br><br>
 			<span class="s17">
 				But that's not all!
@@ -265,12 +265,12 @@ body {
 				Need to pay attention to special sharing system: user can share links to products groups or even images, for example:<br><br>
 				<table>
 					<tr>
-						<td>Link to <i>Womens Underwire Shelf Bra</i> best offers:</td>
+						<td>Link to <span style="font-style: italic;">Womens Underwire Shelf Bra</span> best offers:</td>
 						<td>&nbsp;</td>
 						<td><a href="http://simpleamazonsearch.com/offer-1go" target="_blank">simpleamazonsearch.com/offer-1go</a></td>
 					</tr>
 					<tr>
-						<td>Link to <i>Chopper Bar Lace Shelf Bra</i> image & quick info</td>
+						<td>Link to <span style="font-style: italic;">Chopper Bar Lace Shelf Bra</span> image & quick info</td>
 						<td>&nbsp;</td>
 						<td><a href="http://simpleamazonsearch.com/photo-1gt" target="_blank">simpleamazonsearch.com/photo-1gt</a></td>
 					</tr>
@@ -281,7 +281,8 @@ body {
 				can also generate income for you
 			</span><br><br>
 			<span class="s12">
-				So, if you will share link like <b>www.simpleamazonsearch.com/u-YourNick</b> with friends...<br>
+				So, if you will share link like <span
+					style="font-weight: bold;">www.simpleamazonsearch.com/u-YourNick</span> with friends...<br>
 				<img src="img/arrow2.png" style="position:relative;left:-18px;"><br>
 				&nbsp;&nbsp;&nbsp;
 				<span style="position:relative;left:20px;top:-23px;">friend will open site, will do search, like some image or product and will share it with their friends...</span><br>
@@ -290,7 +291,7 @@ body {
 				<span style="position:relative;left:42px;top:-42px;font-weight:bold;">...you might have an army, which can bring you a huge income!</span><br><br>
 				Real-world example:<br><br>
 				<ul style="list-style-type:none;">
-					<li>1. John got his link <b>simpleamazonsearch.com/u-john1983</b> and posted in his wall at Facebook;</li>
+					<li>1. John got his link <span style="font-weight: bold;">simpleamazonsearch.com/u-john1983</span> and posted in his wall at Facebook;</li>
 					<li style="margin-top:4px;margin-bottom:4px;">2. Kate, Mark and Paul interested and visited it;</li>
 					<li>3. If Kate, Mark or Paul will visit SimpleAmazonSearch.com again and buy something - they'll be happy.<br>
 					John too: his friends got neccessary things and he will get some cash (depending on how expensive these things were);
@@ -318,7 +319,7 @@ body {
 	<tr>
 		<td align="left">
 			<div id="liked" style="display:none;">
-				<span class="s12"><b>Great.</b>
+				<span class="s12"><span style="font-weight: bold;">Great.</span>
 				<br>Please, provide a nick, which you'd like to use:&nbsp;
 				<input type="text" size="20" id="nick" style="font-family: georgia, serif; color: black;font-size:17px;;height:30px;" onkeypress="$('#wrong-char').html('');">&nbsp;
 				<span class="image-page-button" style="position:relative;top:-1px;" onclick="checkNick();">Check</span>&nbsp;
@@ -333,7 +334,7 @@ body {
 		<td align="left">
 			<div id="step2" style="display:none;">
 				<span class="s12">
-				Your link <b>simpleamazonsearch.com/u-<span id="link-nick"></span></b> almost ready for use.<br>
+				Your link <span style="font-weight: bold;">simpleamazonsearch.com/u-<span id="link-nick"></span></span> almost ready for use.<br>
 				Please, provide the remaining information:<br><br>
 				Access Key ID:<br>
 				<input type="text" size="99" id="keyId">&nbsp;optional<span style="position:relative;bottom:2px;">*</span><br><br>
@@ -378,6 +379,6 @@ body {
 		</td>
 	</tr>
 </table>
-</center>
+</div>
 </body>
 </html>

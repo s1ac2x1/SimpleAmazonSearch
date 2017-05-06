@@ -423,7 +423,7 @@ var Figlet = Figlet || (function () {
             for (row = 0; row < len; row++) {
                 outputFigText[row] = "";
             }
-            len = txt.length
+            len = txt.length;
             for (charIndex = 0; charIndex < len; charIndex++) {
                 figChar = figChars[txt.substr(charIndex, 1).charCodeAt(0)];
                 if (figChar) {

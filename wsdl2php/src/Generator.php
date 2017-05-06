@@ -150,9 +150,11 @@ class Generator
     $this->log($this->display('Generation complete'));
   }
 
-  /**
-   * Load the wsdl file into php
-   */
+    /**
+     * Load the wsdl file into php
+     * @param $wsdl
+     * @throws Exception
+     */
   private function load($wsdl)
   {
     try

@@ -14,6 +14,6 @@ var FigletLoader = FigletLoader || (function() {
                 }
             }
         });
-    }
+    };
     return me;
 })();

@@ -1,5 +1,5 @@
 <?php
-function curl_post($url, $data, & $info)
+function curl_post($url, $data)
 {
 
     $ch = curl_init();

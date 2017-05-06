@@ -11,18 +11,6 @@ class Parser
     private $inputStringWithoutKeywordArray = array();
     private $html_;
 
-    private function c($str)
-    {
-        $this->inputString = $str;
-        $this->inputStringAsArray = array_filter(explode(" ", $this->inputString));
-        $keyword = $this->getKeyword();
-        $request = preg_replace("/\b$keyword\b/", "", $str);
-        $request = str_replace('"', "", $request);
-        $request = str_replace("''", "", $request);
-        $this->inputStringWithoutKeywordArray = array_filter(explode(" ", $request));
-        $this->analyze();
-    }
-
     public function __destruct()
     {
         unset($this->inputStringAsArray);

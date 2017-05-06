@@ -422,7 +422,7 @@ abstract class BaseFacebook
    * Retrieve the signed request, either from a request parameter or,
    * if not present, from a cookie.
    *
-   * @return string the signed request, if available, or null otherwise.
+   * @return array|string
    */
   public function getSignedRequest() {
     if (!$this->signedRequest) {
@@ -681,18 +681,19 @@ abstract class BaseFacebook
     }
   }
 
-  /**
-   * Retrieves an access token for the given authorization code
-   * (previously generated from www.facebook.com on behalf of
-   * a specific user).  The authorization code is sent to graph.facebook.com
-   * and a legitimate access token is generated provided the access token
-   * and the user for which it was generated all match, and the user is
-   * either logged in to Facebook or has granted an offline access permission.
-   *
-   * @param string $code An authorization code.
-   * @return mixed An access token exchanged for the authorization code, or
-   *               false if an access token could not be generated.
-   */
+    /**
+     * Retrieves an access token for the given authorization code
+     * (previously generated from www.facebook.com on behalf of
+     * a specific user).  The authorization code is sent to graph.facebook.com
+     * and a legitimate access token is generated provided the access token
+     * and the user for which it was generated all match, and the user is
+     * either logged in to Facebook or has granted an offline access permission.
+     *
+     * @param string $code An authorization code.
+     * @param null $redirect_uri
+     * @return mixed An access token exchanged for the authorization code, or
+     *               false if an access token could not be generated.
+     */
   protected function getAccessTokenFromCode($code, $redirect_uri = null) {
     if (empty($code)) {
       return false;
@@ -837,17 +838,17 @@ abstract class BaseFacebook
     return $this->makeRequest($url, $params);
   }
 
-  /**
-   * Makes an HTTP request. This method can be overridden by subclasses if
-   * developers want to do fancier things or use something other than curl to
-   * make the request.
-   *
-   * @param string $url The URL to make the request to
-   * @param array $params The parameters to use for the POST body
-   * @param CurlHandler $ch Initialized curl handle
-   *
-   * @return string The response text
-   */
+    /**
+     * Makes an HTTP request. This method can be overridden by subclasses if
+     * developers want to do fancier things or use something other than curl to
+     * make the request.
+     *
+     * @param string $url The URL to make the request to
+     * @param array $params The parameters to use for the POST body
+     * @param CurlHandler $ch Initialized curl handle
+     * @return string The response text
+     * @throws FacebookApiException
+     */
   protected function makeRequest($url, $params, $ch=null) {
     if (!$ch) {
       $ch = curl_init();
@@ -1094,14 +1095,15 @@ abstract class BaseFacebook
     return true;
   }
 
-  /**
-   * Analyzes the supplied result to see if it was thrown
-   * because the access token is no longer valid.  If that is
-   * the case, then we destroy the session.
-   *
-   * @param $result array A record storing the error message returned
-   *                      by a failed API call.
-   */
+    /**
+     * Analyzes the supplied result to see if it was thrown
+     * because the access token is no longer valid.  If that is
+     * the case, then we destroy the session.
+     *
+     * @param $result array A record storing the error message returned
+     *                      by a failed API call.
+     * @throws FacebookApiException
+     */
   protected function throwAPIException($result) {
     $e = new FacebookApiException($result);
     switch ($e->getType()) {
@@ -1193,7 +1195,7 @@ abstract class BaseFacebook
   /**
    * Parses the metadata cookie that our Javascript API set
    *
-   * @return  an array mapping key to value
+   * @return an|array
    */
   protected function getMetadataCookie() {
     $cookie_name = $this->getMetadataCookieName();

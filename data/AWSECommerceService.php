@@ -265,12 +265,13 @@ class AWSECommerceService extends SoapClient
     'DecimalWithUnits' => 'DecimalWithUnits',
     'StringWithUnits' => 'StringWithUnits');
 
-  /**
-   * 
-   * @param array $config A array of config values
-   * @param string $wsdl The wsdl file to use
-   * @access public
-   */
+    /**
+     *
+     * @param array $options
+     * @param string $wsdl The wsdl file to use
+     * @internal param array $config A array of config values
+     * @access public
+     */
   public function __construct(array $options = array(), $wsdl = '')
   {
     foreach(self::$classmap as $key => $value)
@@ -284,91 +285,100 @@ class AWSECommerceService extends SoapClient
     parent::__construct($wsdl, $options);
   }
 
-  /**
-   * 
-   * @param ItemSearch $body
-   * @access public
-   */
+    /**
+     *
+     * @param ItemSearch $body
+     * @access public
+     * @return mixed
+     */
   public function ItemSearch(ItemSearch $body)
   {
     return $this->__soapCall('ItemSearch', array($body));
   }
 
-  /**
-   * 
-   * @param ItemLookup $body
-   * @access public
-   */
+    /**
+     *
+     * @param ItemLookup $body
+     * @access public
+     * @return mixed
+     */
   public function ItemLookup(ItemLookup $body)
   {
     return $this->__soapCall('ItemLookup', array($body));
   }
 
-  /**
-   * 
-   * @param BrowseNodeLookup $body
-   * @access public
-   */
+    /**
+     *
+     * @param BrowseNodeLookup $body
+     * @access public
+     * @return mixed
+     */
   public function BrowseNodeLookup(BrowseNodeLookup $body)
   {
     return $this->__soapCall('BrowseNodeLookup', array($body));
   }
 
-  /**
-   * 
-   * @param SimilarityLookup $body
-   * @access public
-   */
+    /**
+     *
+     * @param SimilarityLookup $body
+     * @access public
+     * @return mixed
+     */
   public function SimilarityLookup(SimilarityLookup $body)
   {
     return $this->__soapCall('SimilarityLookup', array($body));
   }
 
-  /**
-   * 
-   * @param CartGet $body
-   * @access public
-   */
+    /**
+     *
+     * @param CartGet $body
+     * @access public
+     * @return mixed
+     */
   public function CartGet(CartGet $body)
   {
     return $this->__soapCall('CartGet', array($body));
   }
 
-  /**
-   * 
-   * @param CartCreate $body
-   * @access public
-   */
+    /**
+     *
+     * @param CartCreate $body
+     * @access public
+     * @return mixed
+     */
   public function CartCreate(CartCreate $body)
   {
     return $this->__soapCall('CartCreate', array($body));
   }
 
-  /**
-   * 
-   * @param CartAdd $body
-   * @access public
-   */
+    /**
+     *
+     * @param CartAdd $body
+     * @access public
+     * @return mixed
+     */
   public function CartAdd(CartAdd $body)
   {
     return $this->__soapCall('CartAdd', array($body));
   }
 
-  /**
-   * 
-   * @param CartModify $body
-   * @access public
-   */
+    /**
+     *
+     * @param CartModify $body
+     * @access public
+     * @return mixed
+     */
   public function CartModify(CartModify $body)
   {
     return $this->__soapCall('CartModify', array($body));
   }
 
-  /**
-   * 
-   * @param CartClear $body
-   * @access public
-   */
+    /**
+     *
+     * @param CartClear $body
+     * @access public
+     * @return mixed
+     */
   public function CartClear(CartClear $body)
   {
     return $this->__soapCall('CartClear', array($body));

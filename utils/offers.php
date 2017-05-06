@@ -40,9 +40,9 @@
         }
 
         .image-page-button {
-            -moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
-            -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
-            box-shadow: inset 0px 1px 0px 0px #ffffff;
+            -moz-box-shadow: inset 0 1px 0 0 #ffffff;
+            -webkit-box-shadow: inset 0 1px 0 0 #ffffff;
+            box-shadow: inset 0 1px 0 0 #ffffff;
             background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #dedede));
             background: -moz-linear-gradient(center top, #ffffff 5%, #dedede 100%);
             filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dedede');
@@ -58,7 +58,7 @@
             font-weight: bold;
             padding: 9px 36px;
             text-decoration: none;
-            text-shadow: 1px 1px 0px #ffffff;
+            text-shadow: 1px 1px 0 #ffffff;
         }
 
         .image-page-button:hover {

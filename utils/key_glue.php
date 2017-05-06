@@ -18,8 +18,8 @@ function test(text) {
 			  'content': conf,
 			  'spin': spin,
 			  'links': links,
-			  'db1': db1,
-		  }
+			  'db1': db1
+          }
 		}).done(function (response) {
 			$('#temp').html(response);
 		});					

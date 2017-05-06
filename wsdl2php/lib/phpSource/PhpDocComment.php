@@ -74,9 +74,10 @@ class PhpDocComment
    */
   private $description;
 
-  /**
-   * Constructs the object, sets all variables to empty
-   */
+    /**
+     * Constructs the object, sets all variables to empty
+     * @param string $description
+     */
   public function __construct($description = '')
   {
     $this->description = $description;

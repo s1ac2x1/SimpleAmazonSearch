@@ -65,18 +65,17 @@ class Cli extends CliParser
     $this->requiredFlags = array();
   }
 
-  /**
-   * Adds the flag as accepted
-   *
-   * @param string $flag
-   * @param string $description
-   * @param bool $isBool If the flag has to have a parameter
-   * @param bool $reqired If the flag is required
-   *
-   * @throws Exception If the flag is already used
-   *
-   * @return void
-   */
+    /**
+     * Adds the flag as accepted
+     *
+     * @param string $flag
+     * @param string $description
+     * @param bool $isBool If the flag has to have a parameter
+     * @param bool $required
+     * @throws Exception If the flag is already used
+     * @internal param bool $reqired If the flag is required
+     *
+     */
   public function addFlag($flag, $description, $isBool = false, $required = false)
   {
     // Check main name

@@ -104,24 +104,24 @@ class Config
    */
   private $sharedTypes;
 
-  /**
-   * Sets all variables
-   *
-   * @param string $inputFile
-   * @param string $outputDir
-   * @param bool $verbose
-   * @param bool $oneFile
-   * @param bool $classExists
-   * @param bool $noTypeConstructor
-   * @param string $namespaceName
-   * @param array $optionsFeatures
-   * @param string $wsdlCache
-   * @param string $compression
-   * @param string $classNames
-   * @param string $prefix
-   * @param string $suffix
-   * @param string $sharedTypes
-   */
+    /**
+     * Sets all variables
+     *
+     * @param string $inputFile
+     * @param string $outputDir
+     * @param bool $verbose
+     * @param bool $oneFile
+     * @param bool $classExists
+     * @param bool $noTypeConstructor
+     * @param string $namespaceName
+     * @param array $optionsFeatures
+     * @param string $wsdlCache
+     * @param string $compression
+     * @param string $classNames
+     * @param string $prefix
+     * @param string $suffix
+     * @param bool|string $sharedTypes
+     */
   public function __construct($inputFile, $outputDir, $verbose = false, $oneFile = false, $classExists = false, $noTypeConstructor = false, $namespaceName = '', $optionsFeatures = array(), $wsdlCache = '', $compression = '', $classNames = '', $prefix = '', $suffix = '', $sharedTypes = false)
   {
     $this->namespaceName = trim($namespaceName);

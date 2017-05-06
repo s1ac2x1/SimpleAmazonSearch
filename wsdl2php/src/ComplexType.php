@@ -29,12 +29,12 @@ class ComplexType extends Type
    */
   private $members;
 
-  /**
-   * Construct the object
-   *
-   * @param string $name The identifier for the class
-   * @param string $restriction The restriction(datatype) of the values
-   */
+    /**
+     * Construct the object
+     *
+     * @param string $name The identifier for the class
+     * @internal param string $restriction The restriction(datatype) of the values
+     */
   function __construct($name)
   {
     parent::__construct($name, null);

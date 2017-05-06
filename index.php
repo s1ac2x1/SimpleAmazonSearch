@@ -16,7 +16,7 @@ include("db.php");
             var ga = document.createElement('script');
             ga.type = 'text/javascript';
             ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            ga.src = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ga, s);
         })();
@@ -210,7 +210,7 @@ include("db.php");
 
     (function () {
         var elem = document.createElement('script');
-        elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+        elem.src = (document.location.protocol === "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
         elem.async = true;
         elem.type = "text/javascript";
         var scpt = document.getElementsByTagName('script')[0];
@@ -229,7 +229,7 @@ include("db.php");
     </div>
 </noscript>
 <div id="wrapper">
-    <center>
+    <div style="text-align: center;">
         <?php
         require_once(dirname(__FILE__) . "/core/CacheHelper.php");
         if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -536,12 +536,12 @@ include("db.php");
         <div id="circles" style="display: none;"></div>
         <div id="topItems" style="display:none;"></div>
         <div id="picturesMode" style="display:none;padding:10px;">
-            <b>Preview type:</b>&nbsp;
+            <span style="font-weight: bold;">Preview type:</span>&nbsp;
             <span id="itemset-default" class="cat-part-selected" onclick="defaultPictures();">default pictures</span>&nbsp;
             <span id="itemset-big" class="cat-part-unselected" onclick="bigPictures();">big pictures</span>
             <span id="additional-options-for-big-items">
 				&nbsp;&nbsp;&nbsp;
-				<b>Sort by:</b>&nbsp;
+				<span style="font-weight: bold;">Sort by:</span>&nbsp;
 				<span id="itemset-sort-price" class="cat-part-selected" onclick="itemsSortByPrice();">price</span>&nbsp;
 				<span id="itemset-sort-offers" class="cat-part-unselected" onclick="itemsSortByOffers();">offers</span>
 			</span>
@@ -556,7 +556,7 @@ include("db.php");
         <div id="indexSearch" style="display: none;" class="smallMargin"></div>
         <div id="baseItem" style="display: none; width:85%" class="smallMargin"></div>
         <br>
-    </center>
+    </div>
     <div id="item-keyword" style="display: none;"></div>
     <div id="hidden-index-cache-collection" style="display: none;">0</div>
     <div id="prelarge"></div>
@@ -568,7 +568,7 @@ include("db.php");
     </div>
     <div id="welcome-info" style="display:none;width:60%;">
         <div class="input-div" style="z-index: 999;">
-            <center>
+            <div style="text-align: center;">
                 <table>
                     <tr>
                         <td align="left"><font style="font-family: georgia, serif; color: black; font-size: 18pt;">Proud
@@ -623,14 +623,14 @@ include("db.php");
                                 <a target="_blank" href="https://brendaneich.com/"> Brendan Eich</a> for the JavaScript;<br><br>
                                 <a target="_blank" href="http://ejohn.org/">John Resig</a> for the <a target="_blank"
                                                                                                       href="http://jquery.com/">jQuery</a>;<br><br>
-                                <b>and special thanks to</b><br><br>
+                                <span style="font-weight: bold;">and special thanks to</span><br><br>
                                 Jeffrey Bezos for the <a target="_blank" href="http://amazon.com">Amazon</a> and <a
                                     target="_blank" href="http://aws.amazon.com/">Amazon Web Services</a>
                             </font>
                         </td>
                     </tr>
                 </table>
-            </center>
+            </div>
         </div>
     </div>
     <div id="prev-search-content" class="arrow-history" style="display:none;"></div>
